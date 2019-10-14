@@ -20,26 +20,24 @@ Então vamos para leitura entender qual é a mágia por trás do ESLint, Prettie
 
 ## O que é o Husky?
 
-**Husky** além de ser um cachorro muito imponente e feliz é um pacote do mundo **JavaScript** que nos ajuda a lidar com o **Git Hooks** de uma forma simples e feliz como o cachorro.
+**Husky** além de ser um cachorro muito imponente e feliz, é um pacote do mundo **JavaScript** que nos ajuda a lidar com o **Git Hooks** de uma forma simples e feliz como o cachorro.
 
 > ### O que é Git Hooks?
 >
-> O **Git Hooks** é uma forma de executar scripts personalizados que pode acontecer tando do lado do servidor quanto do lado do cliente. O `git commit` e `git merge` são operações que acontecem do lado do cliente, já o `git push` é ocorre do lado do servidor.
+> O **Git Hooks** é uma forma de executar scripts personalizados que pode acontecer tanto do lado do servidor quanto do lado do cliente. O `git commit` e `git merge` são operações que acontecem do lado do cliente, já o `git push` ocorre do lado do servidor.
 
-Nesse post nós usaremos o **Husky** na operação `git commit`, no momento que ela contecer o Husky verificará se arquivos do projeto estão seguindo os padrões pré-definidos em nosso **ESLint**. Dessa forma vamos garantir que os códigos comitados estão seguindos as nossas regras portanto teremos assim uma qualidade de código muito mais feliz em nosso projeto.
+Se utilizarmos o **Husky** na operação `git commit`, no momento que ela acontecer o Husky verificará se os arquivos do projeto estão seguindo os padrões pré-definidos em nosso **ESLint**. Dessa forma vamos garantir que os códigos commitados estão seguindo as nossas regras portanto teremos assim uma qualidade de código muito mais feliz em nosso projeto.
 
 <h2 id="eslint">Como configurar ESLint, Prettier e Husky?</h2>
 
-O **JavaScript** esta cada vez mais poderoso, hoje podemos usar ele no **FrontEnd** com frameworks modernos, como: **React**, **Vue** e **Angular** (TypeScript). Além do movimento de compiladores de JavaScript para FrontEnd que vem crescendo com a adoção do **Svelte**.
+O **JavaScript** está cada vez mais poderoso, hoje podemos usá-lo no **FrontEnd** com frameworks modernos como: **React**, **Vue** e **Angular** (TypeScript). Além do movimento de compiladores de JavaScript para FrontEnd que vem crescendo com a adoção do **Svelte**.
 
-Também podemos usar o **JavaScript** no **Backend** com o **NodeJS** e frameworks como: **Express** e **Restify**. Temos também os frameworks que já adotaram **TypeScript** como a linguagem padrão como o **NestJS**.
+Também podemos usar o **JavaScript** no **Backend** com o **NodeJS** e frameworks como: **Express** e **Restify**. Temos também os frameworks que já adotaram **TypeScript** como  linguagem padrão como o **NestJS**.
 
-E outra camada que o **JavaScript** e amigo ou não **TypeScript** vem também sendo bem aceito é a camada **mobile**, principalmente com o **React Native**.
+Outra camada que o **JavaScript** vem também sendo bem aceito é a camada **mobile**, principalmente com o **React Native**.
 
 Como o **JavaScript** está em muitos lugares, mostrarei como você pode configurar o seu ESLint, Prettier e Husky em cada um desses lugares. Agora só escolher o mundo que quer trabalhar e clicar em um dos links a seguir para absorver todo conhecimento que você precisa:
 
-- [Como configura ESLint, Prettier, Husky no Node?]()
-- [Como configura ESLint, Prettier, Husky no React?]()
-- [Como configura ESLint, Prettier, Husky no Vue?]()
-- [Como configura ESLint, Prettier, Husky no React Native?]()
-- [Como configura ESLint, Prettier, Husky no Svelte?]()
+- [Como configurar ESLint, Prettier, Husky no Node?]()
+- [Como configurar ESLint, Prettier, Husky no React?]()
+- [Como configurar ESLint, Prettier, Husky no Svelte?]()
