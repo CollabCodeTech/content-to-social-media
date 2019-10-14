@@ -1,10 +1,10 @@
-# Evitando erros com ESLint, Prettier e Husky no VSCode
+# Como Melhorar a qualidade de código com ESLint, Prettier e Husky
 
-Se você é a pessoa que gosta que o seu código esteja todo indentado da mesma forma, também gosta de usar as mesmas aspas no seu código entre outras padrões mais complexos no seu código, este post é para você. Ele também é para você que não gosta de seguir esses padrões chatos, provavelmente porque lhe dá muito trabalho e você considera isso uma perda de tempo.
+Se você é a pessoa que gosta que o seu código esteja todo indentado da mesma forma, também gosta de usar as mesmas aspas no seu código entre outras padrões mais complexos no seu código com objetivo de ter uma qualidade de código mais feilz, este post é para você. Ele também é para você que não gosta de seguir esses padrões chatos, provavelmente porque lhe dá muito trabalho e você considera isso uma perda de tempo.
 
 Nesse post mostrarei como automatizar todo esse processo de padrões e qualidade de código enquanto você está programando no seu VSCode, além de garantir que o código só será commitado caso o código esteja seguindo os padrões que você ou o seu time adotou.
 
-Então vamos para leitura entender qual é a mágia por trás do ESLint, Prettier e Husky. Se você já sabe o que é o ESLint, Prettier e Husky recomendo você pular para parte prática e ir direto para a seção: <a href="#eslint">Como configurar o ESLint?</a>
+Então vamos para leitura entender qual é a mágia por trás do ESLint, Prettier e Husky. Se você já sabe o que é o ESLint, Prettier e Husky recomendo você pular para parte prática e ir direto para a seção: <a href="#eslint">Como configurar ESLint, Prettier e Husky?</a>
 
 ## O que é ESLint?
 
@@ -23,5 +23,23 @@ Então vamos para leitura entender qual é a mágia por trás do ESLint, Prettie
 **Husky** além de ser um cachorro muito imponente e feliz é um pacote do mundo **JavaScript** que nos ajuda a lidar com o **Git Hooks** de uma forma simples e feliz como o cachorro.
 
 > ### O que é Git Hooks?
+>
+> O **Git Hooks** é uma forma de executar scripts personalizados que pode acontecer tando do lado do servidor quanto do lado do cliente. O `git commit` e `git merge` são operações que acontecem do lado do cliente, já o `git push` é ocorre do lado do servidor.
 
-<h2 id="eslint">Como configurar o ESLint?</h2>
+Nesse post nós usaremos o **Husky** na operação `git commit`, no momento que ela contecer o Husky verificará se arquivos do projeto estão seguindo os padrões pré-definidos em nosso **ESLint**. Dessa forma vamos garantir que os códigos comitados estão seguindos as nossas regras portanto teremos assim uma qualidade de código muito mais feliz em nosso projeto.
+
+<h2 id="eslint">Como configurar ESLint, Prettier e Husky?</h2>
+
+O **JavaScript** esta cada vez mais poderoso, hoje podemos usar ele no **FrontEnd** com frameworks modernos, como: **React**, **Vue** e **Angular** (TypeScript). Além do movimento de compiladores de JavaScript para FrontEnd que vem crescendo com a adoção do **Svelte**.
+
+Também podemos usar o **JavaScript** no **Backend** com o **NodeJS** e frameworks como: **Express** e **Restify**. Temos também os frameworks que já adotaram **TypeScript** como a linguagem padrão como o **NestJS**.
+
+E outra camada que o **JavaScript** e amigo ou não **TypeScript** vem também sendo bem aceito é a camada **mobile**, principalmente com o **React Native**.
+
+Como o **JavaScript** está em muitos lugares, mostrarei como você pode configurar o seu ESLint, Prettier e Husky em cada um desses lugares. Agora só escolher o mundo que quer trabalhar e clicar em um dos links a seguir para absorver todo conhecimento que você precisa:
+
+- [Como configura ESLint, Prettier, Husky no Node?]()
+- [Como configura ESLint, Prettier, Husky no React?]()
+- [Como configura ESLint, Prettier, Husky no Vue?]()
+- [Como configura ESLint, Prettier, Husky no React Native?]()
+- [Como configura ESLint, Prettier, Husky no Svelte?]()
