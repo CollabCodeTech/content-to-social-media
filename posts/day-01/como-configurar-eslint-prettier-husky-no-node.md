@@ -71,10 +71,7 @@ const app = restify.createServer()
 app.get('/', (req, res) => 
   res.send({ hello: "World" }));
 
-app.listen(PORT, function() {
-  console.log('Listening on http://localhost:' + PORT)
-  console.log('To off server: ctrl + c')
-})
+app.listen(PORT)
 ```
 
 Nesse código que acabamos de ver, de forma bem resumida estamos, criando um servidor com o _restify_ na porta 5000 que saberá responder apenas a rota `/` com um simples `json` de `{hello: "World"}`, a parte mais interessante do código, é que não estou seguindo qualquer padrão e de certa forma estamos mesmo a ridicularizar o código, mas estou fazendo isso para te mostrar o poder que teremos após configurarmos o **ESLint**, **Prettier** e **Husky**.
@@ -85,12 +82,7 @@ Por último só precisamos pedir para o node subir o nosso servidor com o comand
 node index.js
 ```
 
-Para esse comando funcionar precisa estar na pasta do projeto, se recebeu a saída a seguir no seu terminal após a execução do comando, então esta tudo certo:
-
-```shell
-Listening on http://localhost:5000
-To off server: ctrl + c
-```
+Para esse comando funcionar precisa estar na pasta do projeto.
 
 <h2 id="config">Como configurar o ESLint em uma aplicação Node?</h2>
 
@@ -228,7 +220,7 @@ Vixi! Agora se você abrir o seu arquivo _index.js_ vai se deparar com algo não
 
 Se para o mouse sobre a `const` que esta na linha 1, vai aparecer um breve descrição do erro que o ESLint achou em seu código, conforme a imagem a seguir:
 
-![Mostrando primeiro erro que o ESLint achou na index.js](img/show-erro.png)
+![Mostrando primeiro erro que o ESLint achou na index.js](img/show-error.png)
 
 Esse erro é simples de arrumar, só precisamos adiconar uma linha em branco aṕos o `require` do `restify`. Mas lembrar de fazer isso vai ser chato, muito chato, não se preocupe e aqui que entra a mágia do **Prettier**. Agora vamos partir para configuração do Prettier que terá a responsabilidade de ler todas as configurações que colocar em nosso **ESLint** e realizar as alterações necessárias uma vez que salvarmos um arquivos que estamos editando.
 
