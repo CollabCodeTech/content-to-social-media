@@ -228,7 +228,7 @@ Por favor, não faça essas correções manualmente, isso só fará você sofrer
 
 ## Como configurar o Prettier com o ESLint?
 
-Primeiro precisamos instalar o plugin do **Prettier** no nosso VSCode, faço isso usando o link a seguir: [https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+Primeiro precisamos instalar o plugin do **Prettier** no nosso VSCode, faça isso usando o link a seguir: [https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 Agora que já temos o Prettier instalado no nosos VSCode podemos instalar os plugin do **ESLint** para o **Prettier** se comunicar com o mesmo. Abra seu terminal e estando dentro da pasta do projeto execute o comando a seguir que instalada todos os pacotes necessários para nossa configuração:
 
@@ -236,7 +236,7 @@ Agora que já temos o Prettier instalado no nosos VSCode podemos instalar os plu
 npm i prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-Não vou entrar no detalhe de cada pacote de inslamos, mas caso tenha dúvidas não deixe de perguntar.
+Não vou entrar no detalhe de cada pacote que instalamos, mas caso tenha dúvidas não deixe de perguntar.
 Após a instalação dos pacotes, abra o arquivo _.eslintrc.json_ no VSCode e adicione no array que esta atribuído a chave `extends` a string `"prettier"`, conforme código a seguir:
 
 ```json
@@ -248,7 +248,7 @@ Após a instalação dos pacotes, abra o arquivo _.eslintrc.json_ no VSCode e ad
 ...
 ```
 
-A seguir dessa chave crie a chave `plugins` (caso ela não exista), atribua um array para chave com a string, `"prettier"`, conforme o código a seguir:
+A seguir da chave `extends` crie a chave `plugins` (caso ela não exista), atribua um array para chave com a string, `"prettier"`, conforme o código a seguir:
 
 ```json
 ...
@@ -262,7 +262,41 @@ A seguir dessa chave crie a chave `plugins` (caso ela não exista), atribua um a
 ...
 ```
 
-Abra seu arquivo _index.js_ e faça uma pequena alteração nele, depois disso salve o arquivo. Era para o prittier ter formatado para você seguindo os padrões e regras de definimos no nosso **ESLint** que hoje são o do style guide do airbnb. Isso não acontece porque precisamos avisar o VSCode que ele deve formatar os nossos arquivos toda vez que salvarmos eles. Para garantir que essa configuração irá funcionar no VSCode de outro desenvolvedor que venha a programar no seu projeto, você tem que criar um arquivo chamado _settings.json_ que ficará dentro de uma pasta chamada _.vscode_ e ela tem que ficar na pasta raiz do seu projeto, por favor crie esse arquivo e esssa pasta de dentro do arquivo adicone o código a seguir:
+A última coisa que precisamos configurar no arquivo _.eslintrc.json_ para o prettier e o ESLint funcionar de forma feliz é adicionar uma `rules` conforme o código a seguir:
+
+```json
+...
+  "rules": {
+    "prettier/prettier": "error"
+  }
+...
+```
+
+Esse é o resultado final do _.eslintrc.json_:
+
+```json
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["prettier", "airbnb-base"],
+  "plugins": ["prettier"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+
+Abra seu arquivo _index.js_ e faça uma pequena alteração nele, depois disso salve o arquivo. Era para o prittier ter formatado seguindo os padrões e regras (style guide do airbnb) que definimos no nosso **ESLint**. Isso não acontece porque precisamos avisar o VSCode que ele deve formatar os nossos arquivos toda vez que salvarmos eles. Para garantir que essa configuração irá funcionar no VSCode de outro desenvolvedor que venha programar no seu projeto, você tem que criar um arquivo chamado _settings.json_ que ficará dentro de uma pasta chamada _.vscode_ e ela tem que ficar na pasta raiz do seu projeto, por favor crie esse arquivo e esssa pasta e dentro do arquivo adicone o código a seguir:
 
 ```json
 {
@@ -270,11 +304,11 @@ Abra seu arquivo _index.js_ e faça uma pequena alteração nele, depois disso s
 }
 ```
 
-Se voltar ao arquivo _index.js_ e salvá-lo novamente verá que seu arquivo será formatado automaticamente seguindo os padrões do style guide do airbnb. Mas pera lá, você pode reparar que o seu ESLint esta reclamando das aspas duplas, e foi o prettier que colou elas como padrão. É se você chegou a conslusão que o airbnb gosta mais de aspas simples, é isso mesmo. Então porque o prettier não seguiu essa regra? Isso acontece porque o prettier segue todas as regras que o ESLint definiu, mas ele não sobre escreve as proprias regras, se você for até a página do plugin prettier verá que ele tem a regra de usar por padrão as aspas duplas:
+Se voltar ao arquivo _index.js_ e salvá-lo novamente verá que seu arquivo será formatado automaticamente seguindo os padrões do style guide do airbnb. Mas pera lá, você pode reparar que o seu ESLint esta reclamando das aspas duplas, e foi o prettier que colou elas como padrão. É se você chegou a conslusão que o airbnb gosta mais de aspas simples, é isso mesmo. Então porque o prettier não seguiu essa regra? Isso acontece porque o prettier segue todas as regras que o ESLint definiu, mas ele não sobreescreve as proprias regras, se você for até a página do plugin prettier verá que ele prefere usar por padrão as aspas duplas:
 
 ![Configurações padrões do Prettier](img/singleQuote.png)
 
-Para mudarmos isso e pedir para ele seguir a regra de aspas simples precisamos, criaremos um arquivo na raiz do projeto com o nome de _prettier.config.js_ e dentro dele terá um código que tem como objetivo sobreescrever o comportamento padrão do `prettier.singleQuote` que hoje é `false` para `true`:
+Para mudarmos isso e pedir para ele seguir a regra de aspas simples, precisamos criaremos um arquivo na raiz do projeto com o nome de _prettier.config.js_ e dentro dele terá um código que tem como objetivo sobreescrever o comportamento padrão do `prettier.singleQuote` que hoje é `false` para `true`:
 
 ```javascript
 module.exports = {
@@ -283,3 +317,14 @@ module.exports = {
 ```
 
 Agora se você voltar ao seu arquivo _index.js_ e salvá-lo, verá que ele será formatado para ficar com aspas simples.
+
+Só mais um detalhe. Se abrir o arquivo _prettier.config.js_ verá que ele tem alguns problemas de compatibilidade com o style guide do airbnb que pedirmos para o ESLint utilizar. Mais uma vez temos um padrão que o prettier tem contra os padrões do style guide que escolhemos. Recomendo você sobreescrever algumas regras do prettier para nem você nem outros devs terem problemas no futuro. Por favor, volte ao arquivo _prettier.config.js_ e deixe ele com as seguites configurações:
+
+```javascript
+module.exports = {
+  tabWidth: 2,
+  semi: true,
+  singleQuote: true,
+  trailingComma: 'es5',
+};
+```
