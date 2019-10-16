@@ -1,8 +1,8 @@
-# Como configurar ESLint, Prettier, Husky no Node?
+# Como configurar ESLint e Prettier no Node?
 
-Se você não sabe o que o **ESLint**, **Prettier** e o **Huskly** eu recomendo você dar uma olhada no [primeiro post](link-pro-post) que fiz onde expliquei o que são eles. O objetivo desse post é mais prático.
+Se você não sabe o que o **ESLint** e **Prettier** eu recomendo você dar uma olhada no [primeiro post](link-pro-post) que fiz onde expliquei o que são eles. O objetivo desse post é mais prático.
 
-Como vamos precisar de um projeto base para mostrar como configurar o ESLint, Prettier e Husky na sua aplicação Node, a seguir ao pré-requisitos vou montar um _hello world_ (olá mundo) de API com **Restify** que o framework usado pela Netflix e outras empresas a mesma altura.
+Como vamos precisar de um projeto base para mostrar como configurar o ESLint e Prettier na sua aplicação Node, a seguir ao pré-requisitos vou montar um _hello world_ (olá mundo) de API com **Restify** que o framework usado pela Netflix e outras empresas a mesma altura.
 
 Se você já tem um projeto criado, por favor só de uma olhada nós pré-requisitos que esta logo a seguir e depois pode pular para a seção: <a href="#config">Como configurar o ESLint em uma aplicação Node?</a>
 
@@ -74,7 +74,7 @@ app.get('/', (req, res) =>
 app.listen(PORT)
 ```
 
-Nesse código que acabamos de ver, de forma bem resumida estamos, criando um servidor com o _restify_ na porta 5000 que saberá responder apenas a rota `/` com um simples `json` de `{hello: "World"}`, a parte mais interessante do código, é que não estou seguindo qualquer padrão e de certa forma estamos mesmo a ridicularizar o código, mas estou fazendo isso para te mostrar o poder que teremos após configurarmos o **ESLint**, **Prettier** e **Husky**.
+Nesse código que acabamos de ver, de forma bem resumida estamos, criando um servidor com o _restify_ na porta 5000 que saberá responder apenas a rota `/` com um simples `json` de `{hello: "World"}`, a parte mais interessante do código, é que não estou seguindo qualquer padrão e de certa forma estamos mesmo a ridicularizar o código, mas estou fazendo isso para te mostrar o poder que teremos após configurarmos o **ESLint** e **Prettier**.
 
 Por último só precisamos pedir para o node subir o nosso servidor com o comando a seguir no terminal:
 
@@ -86,9 +86,9 @@ Para esse comando funcionar precisa estar na pasta do projeto.
 
 <h2 id="config">Como configurar o ESLint em uma aplicação Node?</h2>
 
-Agora chegou a hora de deixar o código amador e subirmos de nível, pensando em qualidade de código e automatização de processos. Se não quiser perder seu tempo fazendo essa configuração do zero e de forma manual, você sempre pode usar o [SourceLevel](https://sourcelevel.io?origin=collabcode-github) para cuidar disso para você e ela tem muito mais do que só **ESLint** como linter, além de muitas métricas e aprovações de Pull Request automatizadas.
+Agora chegou a hora de deixar o código amador e subirmos de nível, pensando em qualidade de código e automatização de processos. 
 
-Volte ao terminal e derrube o seu servidor apertando as teclas `ctrl` e `c` juntas. Agora sim, temos o terminal livre para iniciar a configuração do **ESLint**. Para configurar o ESLint é necessário criar um arquivo de configuração chamado _.eslintrc.json_ (esse arquivo pode ter outras extenssões como: js, yaml e sem extenssão), criar esse arquivo manualmente é um tanto chato, felizmente não precisamos fazer, podemos cria-lo de forma assistida usando o comando a seguir:
+Volte ao terminal e derrube o seu servidor apertando as teclas `ctrl` e `c` juntas. Agora sim, temos o terminal livre para iniciar a configuração do **ESLint**. Para configurar o ESLint é necessário criar um arquivo de configuração chamado _.eslintrc.json_ (esse arquivo pode ter outras extenssões como: js e yaml), criar esse arquivo manualmente é um tanto chato, felizmente não precisamos fazer, podemos cria-lo de forma assistida usando o comando a seguir:
 
 ```shell
 npx eslint --init
@@ -101,6 +101,7 @@ npx eslint --init
 Após a execução do comando o terminal fará perguntas sobre a configuração do **ESLint**. Vamos as perguntas feitas, vou tomar a libertade de fazer uma tradução das pertuntas e a resposa que eu recomendo que você deixe selecionada, não vou explicar todas as possíveis respostas para cada pergunta, mas caso você tenha qualquer dúvida não deixe de perguntar nos comentários:
 
 [![Thumbmail do vídeo mostrando como faz a configuração do ESLint](video/thumbmail.png)](http://www.youtube.com/watch?v=F_fHYicVZi8)
+<small>**Vídeo mostrando as respostas**</small>
 
 **Pertunta 1:**<br>
 `How would you like to use ESLint? (Use arrow keys)`<br>
@@ -328,3 +329,7 @@ module.exports = {
   trailingComma: 'es5',
 };
 ```
+
+Pronto! Isso é o necessário para o prettier funcionar bem com o ESLint uma vez que você esta usando o style guide do airbnb. O importante aqui é você entender que uma vez que você escolher outro style guide é importante entender se o prettier não estã entrando em conflito com o seu style guide e caso estiver você precisar mudar as configurações padrões do seu prettier.
+
+Fico muito feliz em poder trocar conhecimento com você, obrigado por ter lido o post. Se tiver qualquer dúvida não deixe de perguntar. Abraço bons estudos!
