@@ -14,7 +14,7 @@ Open your terminal and create a directory named *api-happy*. To do that, use th
 
     mkdir api-happy
 
-Change your working directory using *cd.*
+Change your working directory using *cd*.
 
     cd api-happy
 
@@ -37,9 +37,9 @@ If the command worked, a new file in the directory called *package.json* is pr
 
 The next step is to install Restify as a dependency of the project. To do that, run:
 
-npm install restify
+	npm install restify
 
-If you want to save some keystrokes, you can run npm i resitfy instead. The --save option is required anymore since now it is a default option. The command should add the following lines to your *package.json* file (you can open it in VSCode to check if you want to):
+If you want to save some keystrokes, you can run `npm i resitfy` instead. The `--save` option is not required anymore since now it is a default option. The command should add the following lines to your *package.json* file (you can open it in VSCode to check if you want to):
 
     ...
     "dependencies": {
@@ -56,7 +56,7 @@ Now, create a *index.js* file using VSCode and paste the following piece of co
     res.send({ hello: "World" }));
     app.listen(PORT)
 
-This code, in a nutshell, creates a *restify* server on port 5000 that responds to the route / with { hello: "Word" } in the JSON format. Be aware that the code is not indented and is totally unformatted. It is intentional, as further, I show how to fix it using **ESLint** and **Prettier.**
+This code, in a nutshell, creates a *restify* server on port 5000 that responds to the route `/` with `{ hello: "World" }` in the JSON format. Be aware that the code is not indented and is totally unformatted. It is intentional, as further, I show how to fix it using **ESLint** and **Prettier**.
 
 At last, start a node process passing *index.js* as an argument:
 
@@ -70,7 +70,7 @@ To configure ESLint, we need a *.eslintrc.json* file. ESLint also supports .js
 
     npx eslint --init
 
-npx installs packages globally and temporarily. It means that npx removes already-used packages after usage. It is an excellent option if you don't want to save disk space and always run an updated version of the package. npx is available since version 5.2 of npm.
+npx installs packages globally and temporarily. It means that npx removes already-used packages after usage. It is an excellent option if you want to save disk space and always run an updated version of the package. npx is available since version 5.2 of npm.
 
 The command configures ESLint by asking questions about your preferences. Below, I present the questions and my recommendations.
 
@@ -161,7 +161,7 @@ Open the *index.js* file. Notice there is no alerts or errors in the editor te
 
 When properly installed, the *index.js* file gets a red underline all over the place, as shown in the image below:
 
-If you hover line 1 over the const keyword, you can see the error description provided by the **ESLint**.
+If you hover line 1 over the `const` keyword, you can see the error description provided by the **ESLint**.
 
 This error is easy to fix. Just add an empty line after requiring *Restify*.
 
@@ -177,7 +177,7 @@ Now, we need to integrate ESLint to Prettier. To do that, go to your terminal an
 
     npm i prettier eslint-config-prettier eslint-plugin-prettier
 
-After installing these three packages, open your *.eslintrc.json* file in VSCode and add in the extends section the string prettier. Like this:
+After installing these three packages, open your *.eslintrc.json* file in VSCode and add in the "extends" section the string "prettier". Like this:
 
     ...
 	"extends": [
@@ -196,13 +196,13 @@ Then create the key "plugins" and add "prettier" to the array. Like this:
 		"prettier"
 	]
 
-The last change is to add a new rule in the rules key, like this:
+The last change is to add a new rule in the "rules" key, like this:
 
     "rules": {
 		"prettier/prettier": "error"
     }
 
-This is the final result of .eslintrc.json:
+This is the final result of *.eslintrc.json*:
 
 	{
 		"env": {
@@ -234,7 +234,7 @@ Did you expect to have your code formatted automatically? Well, before it happen
 
 Get back in VSCode and save *index.js* again. It should format your code as expected. But, you may notice errors on double-quotes. And here is the problem: Prettier should format your code according to ESLint configurations (which is single quotes). But, there are some default options that Prettier does not override, check the image below. Double quotes are one of them.
 
-To fix it, you need to create a .prettier.config.js in the root of your project with the following content:
+To fix it, you need to create a *.prettier.config.js* in the root of your project with the following content:
 
 	module.exports = {
 		tabWidth: 2,
